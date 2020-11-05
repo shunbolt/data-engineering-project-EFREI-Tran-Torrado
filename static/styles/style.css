@@ -1,0 +1,9 @@
+label {
+    display: block;
+    font: 1rem 'Open Sans', sans-serif;
+}
+
+input,
+label {
+    margin: .8rem 0;
+}

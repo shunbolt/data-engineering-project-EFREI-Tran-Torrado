@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sentiment Analysis</title>
+	<link href="{{ url_for('static',filename='styles/style.css') }}" rel="stylesheet">
+</head>
+<body>
+<form method="POST" action="" >
+    <center>
+    <H1>Sentiment sentence analysis</H1>
+    <H3>by Raphaël Tran & Yoann Torrado </H3>
+    <label for="name">Enter your sentence here:</label>
+    <input type="text" name="sentence"/> <br>
+    <input type="submit"> <br>
+    <img name="sentiment-face"
+     src="{{ url_for('static', filename=face) }}">
+    </center>
+</form>
+</body>
+</html>
