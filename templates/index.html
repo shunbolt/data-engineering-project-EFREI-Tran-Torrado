@@ -13,7 +13,9 @@
     <input type="text" name="sentence"/> <br>
     <input type="submit"> <br>
     <img name="sentiment-face"
-     src="{{ url_for('static', filename=face) }}">
+     src="{{ url_for('static', filename=face) }}"> <br>
+     <p>Prediction score : {{ score }} </p>
+
     </center>
 </form>
 </body>
