@@ -32,6 +32,7 @@ class BasicTests(unittest.TestCase):
     def test_b_positive(self):
     	## Connect to localhost
         self.driver.get('http://localhost:5000/')  # Assuming default Flask port
+        self.driver.implicitly_wait(5)
 
         ## Check input
         sentence_input = self.driver.find_element_by_name('sentence')
@@ -50,6 +51,52 @@ class BasicTests(unittest.TestCase):
         ## Get face value
         face_picture = self.driver.find_element_by_name('sentiment-face')
         self.assertIn('positive_face.png', face_picture.get_attribute("src"))
+
+    def test_c_negative(self):
+    	## Connect to localhost
+        self.driver.get('http://localhost:5000/')  # Assuming default Flask port
+        self.driver.implicitly_wait(5)
+        ## Check input
+        sentence_input = self.driver.find_element_by_name('sentence')
+
+        ## Fill input
+        sentence_input.send_keys('I am sad')
+
+        ## Check submit button and submit form
+        submit_button = self.driver.find_element_by_name('button_submit')
+        submit_button.send_keys(Keys.ENTER)
+
+        ## Check if no redirect ( may delete )
+        new_url = self.driver.current_url
+        self.assertEqual(new_url, 'http://localhost:5000/')
+
+        ## Get face value
+        face_picture = self.driver.find_element_by_name('sentiment-face')
+        self.assertIn('negative_face.png', face_picture.get_attribute("src"))
+
+
+    def test_d_neutral(self):
+    	## Connect to localhost
+        self.driver.get('http://localhost:5000/')  # Assuming default Flask port
+        self.driver.implicitly_wait(5)
+        
+        ## Check input
+        sentence_input = self.driver.find_element_by_name('sentence')
+
+        ## Fill input
+        sentence_input.send_keys('I am fine')
+
+        ## Check submit button and submit form
+        submit_button = self.driver.find_element_by_name('button_submit')
+        submit_button.send_keys(Keys.ENTER)
+
+        ## Check if no redirect ( may delete )
+        new_url = self.driver.current_url
+        self.assertEqual(new_url, 'http://localhost:5000/')
+
+        ## Get face value
+        face_picture = self.driver.find_element_by_name('sentiment-face')
+        self.assertIn('neutral_face.png', face_picture.get_attribute("src"))
 
 if __name__ == '__main__':
     unittest.main()		
