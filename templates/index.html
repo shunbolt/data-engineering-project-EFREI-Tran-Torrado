@@ -11,7 +11,7 @@
     <H3>by Raphaël Tran & Yoann Torrado </H3>
     <label for="name">Enter your sentence here:</label>
     <input type="text" name="sentence"/> <br>
-    <input type="submit"> <br>
+    <input type="submit" name="button_submit"/> <br>
     <img name="sentiment-face"
      src="{{ url_for('static', filename=face) }}"> <br>
      <p>Prediction score : {{ score }} </p>
