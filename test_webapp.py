@@ -1,6 +1,9 @@
 import os
 import requests
 import unittest
+import time 
+
+
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -32,7 +35,7 @@ class BasicTests(unittest.TestCase):
     def test_b_positive(self):
     	## Connect to localhost
         self.driver.get('http://localhost:5000/')  # Assuming default Flask port
-        self.driver.implicitly_wait(5)
+        self.driver.implicitly_wait(10)
 
         ## Check input
         sentence_input = self.driver.find_element_by_name('sentence')
@@ -43,6 +46,8 @@ class BasicTests(unittest.TestCase):
         ## Check submit button and submit form
         submit_button = self.driver.find_element_by_name('button_submit')
         submit_button.send_keys(Keys.ENTER)
+
+        time.sleep(3)
 
         ## Check if no redirect ( may delete )
         new_url = self.driver.current_url
@@ -55,7 +60,7 @@ class BasicTests(unittest.TestCase):
     def test_c_negative(self):
     	## Connect to localhost
         self.driver.get('http://localhost:5000/')  # Assuming default Flask port
-        self.driver.implicitly_wait(5)
+        self.driver.implicitly_wait(10)
         ## Check input
         sentence_input = self.driver.find_element_by_name('sentence')
 
@@ -65,6 +70,8 @@ class BasicTests(unittest.TestCase):
         ## Check submit button and submit form
         submit_button = self.driver.find_element_by_name('button_submit')
         submit_button.send_keys(Keys.ENTER)
+
+        time.sleep(3)
 
         ## Check if no redirect ( may delete )
         new_url = self.driver.current_url
@@ -78,7 +85,7 @@ class BasicTests(unittest.TestCase):
     def test_d_neutral(self):
     	## Connect to localhost
         self.driver.get('http://localhost:5000/')  # Assuming default Flask port
-        self.driver.implicitly_wait(5)
+        self.driver.implicitly_wait(10)
         
         ## Check input
         sentence_input = self.driver.find_element_by_name('sentence')
@@ -89,6 +96,8 @@ class BasicTests(unittest.TestCase):
         ## Check submit button and submit form
         submit_button = self.driver.find_element_by_name('button_submit')
         submit_button.send_keys(Keys.ENTER)
+
+        time.sleep(3)
 
         ## Check if no redirect ( may delete )
         new_url = self.driver.current_url

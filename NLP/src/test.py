@@ -41,7 +41,7 @@ def parse_args():
 def prediction(args):
      
 
-    path = "../model/nltk.NaiveBayesClassifier.pkl"
+    path = "NLP/model/nltk.NaiveBayesClassifier.pkl"
     file = "nltk-NaiveBayesClassifier.pkl"
 
     # Load the Model back from file

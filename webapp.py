@@ -1,13 +1,17 @@
 from flask import Flask, request, render_template
+from NLP.src.test import prediction 
+
+
 app = Flask(__name__)
 
 def get_face(sentence):
 	img_path = "neutral_face.png"
+	result = prediction(sentence)
 	score = 0.5
-	if sentence == 'I am happy':
+	if result == 'Positive':
 		img_path = "positive_face.png"
 		score = 1
-	elif sentence == 'I am sad':
+	elif result == 'Negative':
 		img_path = "negative_face.png"
 		score = 0
 
