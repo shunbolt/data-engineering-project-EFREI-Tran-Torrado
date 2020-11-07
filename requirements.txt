@@ -1,0 +1,3 @@
+nltk
+Flask
+selenium
