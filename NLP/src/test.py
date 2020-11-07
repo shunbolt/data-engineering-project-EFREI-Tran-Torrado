@@ -38,18 +38,22 @@ def parse_args():
     )
     return parser.parse_args()
 
-args = parse_args() 
+def prediction(args):
+     
 
-path = "../model/nltk.NaiveBayesClassifier.pkl"
-file = "nltk-NaiveBayesClassifier.pkl"
+    path = "../model/nltk.NaiveBayesClassifier.pkl"
+    file = "nltk-NaiveBayesClassifier.pkl"
 
-# Load the Model back from file
-with open(path, 'rb') as file:  
-    classifier = pickle.load(file)
+    # Load the Model back from file
+    with open(path, 'rb') as file:  
+        classifier = pickle.load(file)
 
-    
-custom_tweet = str(args)
+    custom_tweet = str(args)
+    custom_tokens = remove_noise(word_tokenize(custom_tweet))
+    result = classifier.classify(dict([token, True] for token in custom_tokens))
+    return(result)
 
-custom_tokens = remove_noise(word_tokenize(custom_tweet))
 
-print(classifier.classify(dict([token, True] for token in custom_tokens)))
+args = parse_args()
+result = prediction(args)
+print(result)
