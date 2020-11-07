@@ -6,14 +6,14 @@ app = Flask(__name__)
 
 def get_face(sentence):
 	img_path = "neutral_face.png"
-	result = prediction(sentence)
-	score = 0.5
+	result, pos_score, neu_score, neg_score  = prediction(sentence)
+	score = neu_score
 	if result == 'Positive':
 		img_path = "positive_face.png"
-		score = 1
+		score = pos_score
 	elif result == 'Negative':
 		img_path = "negative_face.png"
-		score = 0
+		score = neg_score
 
 	return render_template('index.html', face=img_path, score=score)
 

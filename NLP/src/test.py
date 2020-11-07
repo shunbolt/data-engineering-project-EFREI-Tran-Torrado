@@ -51,7 +51,11 @@ def prediction(args):
     custom_tweet = str(args)
     custom_tokens = remove_noise(word_tokenize(custom_tweet))
     result = classifier.classify(dict([token, True] for token in custom_tokens))
-    return(result)
+    proba = classifier.prob_classify(dict([token, True] for token in custom_tokens))
+    pos = proba.prob("Positive")
+    neu = proba.prob("Neutral")
+    neg = proba.prob("Negative")
+    return result, pos, neu, neg 
 
 
 args = parse_args()
