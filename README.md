@@ -7,8 +7,8 @@
 - Selenium library to run the tests on your machine : `pip install selenium`
 
 ### Installation :
-- `git clone git@github.com:4l3ss/efrei-devops-project.git`
-- `cd efrei-devops-project`
+- `git clone https://github.com/shunbolt/data-engineering-project-EFREI-Tran-Torrado.git`
+- `cd data-engineering-project-EFREI-Tran-Torrado`
 
 ### Starting the app
 `./run_and_test.sh` or `docker-compose up`
